@@ -67,6 +67,44 @@ class TransportFlowTests(unittest.TestCase):
         workflow = json.loads((ROOT / "workflow.json").read_text(encoding="utf-8"))
         self.assertEqual(workflow["tachograph_download_days"], {"driver_card": 28, "vehicle_unit": 90})
 
+    def test_workflow_fleet_distribution_matches_seed(self):
+        workflow = json.loads((ROOT / "workflow.json").read_text(encoding="utf-8"))
+        expected = {
+            "reefer": "Chłodnia",
+            "food_tanker": "Cysterna spożywcza",
+            "adr_tanker": "Cysterna ADR",
+            "curtainsider": "Plandeka",
+        }
+
+        db = app.connection()
+        rows = db.execute(
+            "SELECT vehicle_type, COUNT(*) count FROM vehicles GROUP BY vehicle_type"
+        ).fetchall()
+        db.close()
+        actual = {row["vehicle_type"]: row["count"] for row in rows}
+
+        self.assertEqual(sum(workflow["fleet"].values()), 20)
+        for workflow_key, vehicle_type in expected.items():
+            self.assertEqual(actual[vehicle_type], workflow["fleet"][workflow_key])
+
+    def test_workflow_blocking_rules_cover_demo_document_block(self):
+        workflow = json.loads((ROOT / "workflow.json").read_text(encoding="utf-8"))
+        required = {
+            "driver_time_invalid",
+            "company_document_expired",
+            "vehicle_document_expired",
+            "specialist_document_missing",
+            "pod_missing",
+            "margin_below_floor",
+        }
+        self.assertTrue(required.issubset(set(workflow["blocking_rules"])))
+        self.assertTrue(any(
+            item["document_type"] == "Certyfikat mycia cysterny"
+            and item["status"] == "Brak"
+            and item["blocking_process"] == "Wyjazd"
+            for item in app.dashboard()["documents"]
+        ))
+
     def test_dashboard_endpoint_returns_json(self):
         response = self.call_api("/api/dashboard")
         self.assertEqual(response["status"], "200 OK")
