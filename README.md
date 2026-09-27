@@ -1,5 +1,7 @@
 # TransportFlow Control Center
 
+[![Test](https://github.com/lukaszst-cz/transportflow-control-center/actions/workflows/test.yml/badge.svg)](https://github.com/lukaszst-cz/transportflow-control-center/actions/workflows/test.yml)
+
 Backendowa część demonstracji **TransportFlow 360**: lokalny model operacyjny Python + SQLite dla floty, zleceń, dokumentów i zgodności.
 
 Frontend/PWA i skoroszyt procesu: https://github.com/lukaszst-cz/transportflow-360
@@ -34,6 +36,20 @@ Następnie otwórz `http://127.0.0.1:8025`.
 ```powershell
 python app.py --check
 ```
+
+## Kontrola jakości
+
+Automatyczne testy korzystają z osobnej tymczasowej bazy SQLite i obejmują:
+- spójność floty i kierowców;
+- marżę i dane operacyjne zleceń;
+- wymagane dokumenty oraz scenariusz blokady wyjazdu;
+- okresy odczytów 28/90 dni;
+- endpointy dashboardu i zleceń;
+- filtrowanie po statusie i obsługę 404;
+- kontrolę syntetycznego zestawu danych;
+- powtarzalne inicjalizowanie bazy bez duplikatów.
+
+[Strategia testów](qa/TEST_STRATEGY.md) · [Przypadki testowe](qa/TEST_CASES.md) · [Macierz śledzenia](qa/TRACEABILITY_MATRIX.md) · [Raport wykonania](qa/EXECUTION_REPORT.md)
 
 ## Testy
 
