@@ -44,6 +44,7 @@ Automatyczne testy korzystają z osobnej tymczasowej bazy SQLite i obejmują:
 - marżę i dane operacyjne zleceń;
 - wymagane dokumenty oraz scenariusz blokady wyjazdu;
 - okresy odczytów 28/90 dni;
+- zgodność rozkładu floty i reguł blokujących z `workflow.json`;
 - endpointy dashboardu i zleceń;
 - filtrowanie po statusie i obsługę 404;
 - kontrolę syntetycznego zestawu danych;
