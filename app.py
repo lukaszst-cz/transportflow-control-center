@@ -137,6 +137,9 @@ def application(environ, start_response):
     path = environ.get("PATH_INFO", "/")
     if path == "/":
         return response(start_response, "200 OK", render().encode(), "text/html; charset=utf-8")
+    if path == "/api/health":
+        payload = {"status": "ok", "service": "transportflow-control-center", "data_class": "synthetic"}
+        return response(start_response, "200 OK", json.dumps(payload, ensure_ascii=False).encode(), "application/json; charset=utf-8")
     if path == "/api/dashboard":
         return response(start_response, "200 OK", json.dumps(dashboard(), ensure_ascii=False).encode(), "application/json; charset=utf-8")
     if path == "/api/orders":
