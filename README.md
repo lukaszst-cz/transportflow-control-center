@@ -31,6 +31,16 @@ python app.py
 
 Następnie otwórz `http://127.0.0.1:8025`.
 
+## API demonstracyjne
+
+Po uruchomieniu lokalnym dostępne są:
+- `GET /api/health` — stan aplikacji i informacja, że zestaw danych jest syntetyczny;
+- `GET /api/dashboard` — podsumowanie floty, kierowców, zleceń i dokumentów;
+- `GET /api/orders` — lista demonstracyjnych zleceń;
+- `GET /api/orders?status=W%20trasie` — filtrowanie zleceń po statusie.
+
+API jest częścią demonstracji lokalnej. Nie zawiera logowania ani produkcyjnego RBAC.
+
 ## Kontrola danych
 
 ```powershell
