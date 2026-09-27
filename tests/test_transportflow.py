@@ -105,6 +105,13 @@ class TransportFlowTests(unittest.TestCase):
             for item in app.dashboard()["documents"]
         ))
 
+    def test_health_endpoint(self):
+        response = self.call_api("/api/health")
+        self.assertEqual(response["status"], "200 OK")
+        self.assertEqual(response["json"]["status"], "ok")
+        self.assertEqual(response["json"]["service"], "transportflow-control-center")
+        self.assertEqual(response["json"]["data_class"], "synthetic")
+
     def test_dashboard_endpoint_returns_json(self):
         response = self.call_api("/api/dashboard")
         self.assertEqual(response["status"], "200 OK")
