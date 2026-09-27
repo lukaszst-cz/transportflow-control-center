@@ -1,5 +1,11 @@
 # TransportFlow Control Center
 
+Backendowa część demonstracji **TransportFlow 360**: lokalny model operacyjny Python + SQLite dla floty, zleceń, dokumentów i zgodności.
+
+Frontend/PWA i skoroszyt procesu: https://github.com/lukaszst-cz/transportflow-360
+
+Działające demo frontowe: https://lukaszst-cz.github.io/transportflow-360/
+
 Lokalna aplikacja demonstracyjna Python + SQLite pokazująca:
 
 - 20 zestawów: 12 chłodni, 4 cysterny i 4 plandeki;
