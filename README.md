@@ -11,13 +11,13 @@ Działające demo frontowe: https://lukaszst-cz.github.io/transportflow-360/
 Lokalna aplikacja demonstracyjna Python + SQLite pokazująca:
 
 - 20 zestawów: 12 chłodni, 4 cysterny i 4 plandeki;
-- 26 pracowników-kierowców;
+- 26 kierowców: 24 podstawowych i 2 rezerwowych;
 - zlecenia kontraktowe i giełdowe;
 - koszty, ceny i marżę;
 - dokumenty, terminy oraz blokady procesu;
 - terminy odczytu kart kierowców i danych pojazdów;
 - API JSON do odczytu dashboardu i zleceń.
-- rozdzielenie widoków klienta, handlu, dyspozycji, kierowcy, floty, zgodności, finansów, najmu i właściciela.
+- powiązanie z publicznym frontendem, który rozdziela widoki klienta, handlu, dyspozycji, kierowcy, floty, zgodności, finansów, najmu i właściciela.
 
 Wszystkie dane są syntetyczne. Aplikacja nie jest produkcyjnym TMS-em.
 

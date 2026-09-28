@@ -45,6 +45,15 @@ class TransportFlowTests(unittest.TestCase):
         self.assertEqual(data["drivers"]["drivers"], 26)
         self.assertGreater(data["fleet"]["monthly_lease"], 0)
 
+    def test_driver_employment_distribution(self):
+        db = app.connection()
+        rows = db.execute(
+            "SELECT employment_status, COUNT(*) count FROM drivers GROUP BY employment_status"
+        ).fetchall()
+        db.close()
+        distribution = {row["employment_status"]: row["count"] for row in rows}
+        self.assertEqual(distribution, {"Pracownik": 24, "Rezerwowy": 2})
+
     def test_margin_is_positive_and_below_one(self):
         for order in app.dashboard()["orders"]:
             margin = app.order_margin(order)

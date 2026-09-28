@@ -80,7 +80,7 @@ def initialise_database() -> None:
         two_weeks = week + 30 + (index % 4) * 3
         due = today + timedelta(days=(index % 8) * 4 + 1)
         status = "Uwaga" if two_weeks > 84 or (due - today).days <= 3 else "Zgodny"
-        drivers.append((f"DR-{index:03d}", "Pracownik", str(due), week, two_weeks, status))
+        employment = "Rezerwowy" if index > 24 else "Pracownik"\n        drivers.append((f"DR-{index:03d}", employment, str(due), week, two_weeks, status))
     db.executemany("INSERT INTO drivers(code,employment_status,card_download_due,driving_hours_week,driving_hours_two_weeks,compliance_status) VALUES(?,?,?,?,?,?)", drivers)
 
     customers = [("KON-001", "Kontrakt", "PLN", 30, "Aktywny"), ("KON-002", "Kontrakt", "EUR", 45, "Aktywny"), ("GIE-001", "Giełda", "EUR", 14, "Aktywny")]
