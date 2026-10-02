@@ -69,3 +69,10 @@ python -m unittest discover -s tests -v
 ```
 
 Dokumentacja QA znajduje się w katalogu `qa/`.
+
+## Autor, darmowe projekty i wsparcie
+
+Projekt jest udostępniany bezpłatnie jako demonstracja i portfolio. Jeśli jest przydatny, można dobrowolnie wesprzeć dalszy rozwój: **[Postaw Naleśnikowi++ kawę ☕](https://buymeacoffee.com/nalesnik_plus_plus)**.
+
+Potrzebujesz własnej strony WWW, formularza wyceny albo prostego systemu dla firmy? **[Zobacz Zielona Marka →](https://zielona-marka.pl)**.
+
